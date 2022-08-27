@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "scss:dev": "node-sass assets/scss -o assets/css --output-style 'expanded' --source-map true -q",
     "scss:prod": "node-sass assets/scss -o assets/css --output-style 'compressed' --source-map false -q",
     "postcss": "postcss -u autoprefixer -r assets/css/*.css",
