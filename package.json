@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha 'test/**/*.js' --recursive --reporter mocha-junit-reporter --timeout 60000 --exit",
+    "test": "node test.js",
     "scss:dev": "node-sass assets/scss -o assets/css --output-style 'expanded' --source-map true -q",
     "scss:prod": "node-sass assets/scss -o assets/css --output-style 'compressed' --source-map false -q",
     "postcss": "postcss -u autoprefixer -r assets/css/*.css",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "mocha": "^10.0.0",
+    "mocha-junit-reporter": "^2.0.2",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "postcss-cli": "^7.1.2",
