@@ -6,8 +6,10 @@ name: Node.js Tests
 
 on:
   workflow_dispatch:
-  merge_group:
   pull_request:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -19,43 +21,33 @@ concurrency:
   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
   cancel-in-progress: true
 
-env:
-  # Setting this will activate the jest tests that depend on actually
-  # sending real search queries to Elasticsearch
-  ELASTICSEARCH_URL: http://localhost:9200/
-
 jobs:
   test:
-    # Run on ubuntu-20.04-xl if the private repo or ubuntu-latest if the public repo
+    # Run on self-hosted if the private repo or ubuntu-latest if the public repo
     # See pull # 17442 in the private repo for context
-    runs-on: ${{ fromJSON('["ubuntu-latest", "ubuntu-20.04-xl"]')[github.repository == 'github/docs-internal'] }}
+    runs-on: ${{ fromJSON('["ubuntu-latest", "self-hosted"]')[github.repository == 'github/docs-internal'] }}
     timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
+        node-version: [14.6]
         # The same array lives in test-windows.yml, so make any updates there too.
         test-group:
           [
-            content
+            content,
+            graphql,
+            meta,
+            rendering,
+            routing,
+            unit,
+            linting,
+            translations,
           ]
     steps:
-      - name: Install a local Elasticsearch for testing
-        # For the sake of saving time, only run this step if the test-group
-        # is one that will run tests against an Elasticsearch on localhost.
-        if: ${{ matrix.test-group == 'content' }}
-        uses: getong/elasticsearch-action@95b501ab0c83dee0aac7c39b7cea3723bef14954
-        with:
-          elasticsearch version: '7.17.5'
-          host port: 9200
-          container port: 9200
-          host node port: 9300
-          node port: 9300
-          discovery type: 'single-node'
-
       # Each of these ifs needs to be repeated at each step to make sure the required check still runs
       # Even if if doesn't do anything
       - name: Check out repo
-        uses: actions/checkout@dcd71f646680f2efd8db4afa5ad64fdcba30e748
+        uses: actions/checkout@v3
         with:
           # Not all test suites need the LFS files. So instead, we opt to
           # NOT clone them initially and instead, include them manually
@@ -67,7 +59,7 @@ jobs:
       - name: Figure out which docs-early-access branch to checkout, if internal repo
         if: ${{ github.repository == 'github/docs-internal' }}
         id: check-early-access
-        uses: actions/github-script@2b34a689ec86a68d8ab9478298f91d5401337b7d
+        uses: actions/github-script@v6
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         with:
@@ -81,7 +73,7 @@ jobs:
             try {
               const response = await github.repos.getBranch({
                 owner: 'github',
-                repo: 'docs-early-access',
+                repo: 'marceloalbam',
                 BRANCH_NAME,
               })
               console.log(`Using docs-early-access branch called '${BRANCH_NAME}'.`)
@@ -96,9 +88,9 @@ jobs:
 
       - name: Check out docs-early-access too, if internal repo
         if: ${{ github.repository == 'github/docs-internal' }}
-        uses: actions/checkout@dcd71f646680f2efd8db4afa5ad64fdcba30e748
+        uses: actions/checkout@v3
         with:
-          repository: github/docs-early-access
+          repository: github/marceloalbam
           token: ${{ secrets.DOCUBOT_REPO_PAT }}
           path: docs-early-access
           ref: ${{ steps.check-early-access.outputs.result }}
@@ -132,28 +124,22 @@ jobs:
           echo "${{ steps.get_diff_files.outputs.files }}" > get_diff_files.txt
 
       - name: Setup node
-        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048
+        uses: actions/setup-node@v2.2.0
         with:
-          node-version: '16.15.0'
+          node-version: ${{ matrix.node-version }}
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
       - name: Cache nextjs build
-        uses: actions/cache@48af2dc4a9e8278b89d7fa154b955c30c6aaab09
+        uses: actions/cache@v1
         with:
           path: .next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('package*.json') }}
 
       - name: Run build script
-        run: npm run build
-
-      - name: Index fixtures into the local Elasticsearch
-        # For the sake of saving time, only run this step if the test-group
-        # is one that will run tests against an Elasticsearch on localhost.
-        if: ${{ matrix.test-group == 'content' }}
-        run: npm run index-test-fixtures
+        run: npm build
 
       - name: Run tests
         env:
