@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha 'test/**/*.js' --recursive --reporter mocha-junit-reporter --timeout 60000 --exit",
     "scss:dev": "node-sass assets/scss -o assets/css --output-style 'expanded' --source-map true -q",
     "scss:prod": "node-sass assets/scss -o assets/css --output-style 'compressed' --source-map false -q",
     "postcss": "postcss -u autoprefixer -r assets/css/*.css",
