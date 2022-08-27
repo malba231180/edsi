@@ -8,7 +8,7 @@
  * @license      GPL-2.0+
 **/
 
-// Full width layout
+// Full width layout-upd
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 remove_action( 'genesis_before_loop',   'genesis_do_breadcrumbs'                );
