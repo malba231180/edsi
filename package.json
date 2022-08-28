@@ -27,5 +27,7 @@
     "postcss-cli": "^7.1.2",
     "uglify-js": "^3.10.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "next": "12.2.4"
+  }
 }
