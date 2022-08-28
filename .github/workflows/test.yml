@@ -39,6 +39,7 @@ jobs:
             content
           ]
     steps:
+      
       # Each of these ifs needs to be repeated at each step to make sure the required check still runs
       # Even if if doesn't do anything
       - name: Check out repo
@@ -123,6 +124,9 @@ jobs:
         with:
           node-version: '16.15.0'
           cache: npm
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Cache nextjs build
         uses: actions/cache@48af2dc4a9e8278b89d7fa154b955c30c6aaab09
