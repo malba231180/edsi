@@ -32,6 +32,6 @@
   },
   "repository": "git://github.com/malba231180/edsi.git",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@malba231180"
+    "registry": "https://npm.pkg.github.com"
   }
 }
