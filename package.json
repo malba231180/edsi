@@ -1,5 +1,5 @@
 {
-  "name": "@malba231180/edsi",
+  "name": "edsi",
   "version": "1.0.0",
   "description": "Genesis child theme developed for [Texas A&amp;M Transportation Institute (TTI)](https://tti.tamu.edu) groups' Wordpress websites hosted on WP Engine. See [mobility.tamu.edu](https://mobility.tamu.edu) for demo.",
   "main": "index.js",
@@ -25,7 +25,7 @@
     "url": "git+https://github.com/malba231180/edsi.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/malba231180/edsi"
+    "registry": "https://npm.pkg.github.com/@malba231180/edsi"
   },
   "bugs": {
     "url": "https://github.com/malba231180/edsi/issues"
