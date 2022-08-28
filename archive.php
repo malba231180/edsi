@@ -15,7 +15,7 @@ remove_action( 'genesis_before_loop',   'genesis_do_breadcrumbs'                
 // add_action( 'genesis_after_header',   'genesis_do_breadcrumbs', 15                );
 
 /**
- * Fires at end of doing taxonomy archive title and description.
+ * Fires at end of doing taxonomy archive title and description.s
  *
  * Allows you to reorganize output of the archive headings.
  *
