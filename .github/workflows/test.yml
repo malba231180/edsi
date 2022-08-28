@@ -125,9 +125,13 @@ jobs:
           node-version: '16.15.0'
           cache: npm
 
-      - name: Install dependencies
+      - name: Install dependencies - next
         run: npm install next
+
+      - name: Install react
         run: npm install react
+
+      - name: Install dependencies react-dom
         run: npm install react-dom
 
       - name: Cache nextjs build
