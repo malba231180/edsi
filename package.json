@@ -25,7 +25,7 @@
     "url": "git+https://github.com/malba231180/edsi.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/malba231180"
+    "registry": "https://npm.pkg.github.com/malba231180/edsi"
   },
   "bugs": {
     "url": "https://github.com/malba231180/edsi/issues"
