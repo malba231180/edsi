@@ -19,4 +19,4 @@ jobs:
           scope: '@malba231180'
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN_PKG90: ${{ secrets.GH_PKG_90 }}
+          NODE_AUTH_TOKEN_PKG90: ${{ secrets.NODE_AUTH_TOKEN }}
