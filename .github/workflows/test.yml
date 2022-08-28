@@ -131,7 +131,7 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('package*.json') }}
 
       - name: Run build script
-        run: npm run build
+        run: npm build
 
       - name: Run tests
         env:
