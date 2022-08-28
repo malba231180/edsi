@@ -21,9 +21,7 @@ jobs:
       - name: list
         run: npm config ls -l
       - name: Install dependencies
-        run: npm install npm-check-updates && ncu -u
-      - name: upd
-        run: npm update && npm install
+        run: npm install
       - name: ci
         run: npm ci
       - name: GitHub Release
