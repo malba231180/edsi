@@ -125,6 +125,9 @@ jobs:
           node-version: '16.15.0'
           cache: npm
 
+      - name: Install dependencies - next
+        run: npm ci
+
       - name: Cache nextjs build
         uses: actions/cache@48af2dc4a9e8278b89d7fa154b955c30c6aaab09
         with:
