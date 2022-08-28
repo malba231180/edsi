@@ -36,7 +36,14 @@ jobs:
         # The same array lives in test-windows.yml, so make any updates there too.
         test-group:
           [
-            content
+            content,
+            graphql,
+            meta,
+            rendering,
+            routing,
+            unit,
+            linting,
+            translations,
           ]
     steps:
       
