@@ -144,7 +144,7 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('package*.json') }}
 
       - name: Run build script
-        run: npm build
+        run: npm run build
 
       - name: Index fixtures into the local Elasticsearch
         # For the sake of saving time, only run this step if the test-group
