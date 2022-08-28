@@ -1,5 +1,5 @@
 {
-  "name": "edsi",
+  "name": "@malba231180/edsi",
   "version": "1.0.0",
   "description": "Genesis child theme developed for [Texas A&amp;M Transportation Institute (TTI)](https://tti.tamu.edu) groups' Wordpress websites hosted on WP Engine. See [mobility.tamu.edu](https://mobility.tamu.edu) for demo.",
   "main": "index.js",
