@@ -126,7 +126,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm install next
+        run: npm install react
+        run: npm install react-dom
 
       - name: Cache nextjs build
         uses: actions/cache@48af2dc4a9e8278b89d7fa154b955c30c6aaab09
