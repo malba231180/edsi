@@ -19,7 +19,9 @@ jobs:
           node-version: 'lts/*'
           registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies
-        run: npm install
+        run: npm install -g npm-check-updates && ncu -u
+      - name: upd
+        run: npm update && npm install
       - name: ci
         run: npm ci
       - name: GitHub Release
