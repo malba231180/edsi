@@ -1,7 +1,7 @@
 {
   "name": "@malba231180/edsi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Genesis child theme developed for [Texas A&amp;M Transportation Institute (TTI)](https://tti.tamu.edu) groups' Wordpress websites hosted on WP Engine. See [mobility.tamu.edu](https://mobility.tamu.edu) for demo.",
   "main": "index.js",
   "scripts": {
     "build": "next build",
@@ -16,25 +16,22 @@
     "watch:js": "nodemon --watch assets/js/src -e js -x \"npm run uglify:dev\"",
     "watch": "npm run watch:scss & npm run watch:js"
   },
-  "author": "",
+  "author": "TTI Group",
   "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "node-sass": "^7.0.1",
-    "nodemon": "^2.0.4",
-    "postcss-cli": "^7.1.2",
-    "uglify-js": "^3.10.4"
-  },
-  "dependencies": {
-    "next": "^12.2.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
+  "devDependencies": {},
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/malba231180/edsi.git"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/malba231180/edsi/issues"
+  },
+  "homepage": "https://github.com/malba231180/edsi#readme",
+  "directories": {
+    "test": "tests"
   }
 }
