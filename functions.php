@@ -9,7 +9,7 @@
 **/
 
 /**
- * Set up the content width value based on the theme's design.0
+ * Set up the content width value based on the theme's design.02
  *
  */
 if ( ! isset( $content_width ) )
