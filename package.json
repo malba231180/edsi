@@ -31,6 +31,10 @@
     "react-dom": "^17.0.2"
   },
   "repository": {
+    "type": "git",
     "url": "https://github.com/malba231180/edsi.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
