@@ -133,12 +133,6 @@ jobs:
       - name: Run build script
         run: npm run build
 
-      - name: Index fixtures into the local Elasticsearch
-        # For the sake of saving time, only run this step if the test-group
-        # is one that will run tests against an Elasticsearch on localhost.
-        if: ${{ matrix.test-group == 'content' }}
-        run: npm run index-test-fixtures
-
       - name: Run tests
         env:
           DIFF_FILE: get_diff_files.txt

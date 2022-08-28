@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "next build",
     "test": "node test.js",
     "scss:dev": "node-sass assets/scss -o assets/css --output-style 'expanded' --source-map true -q",
     "scss:prod": "node-sass assets/scss -o assets/css --output-style 'compressed' --source-map false -q",
